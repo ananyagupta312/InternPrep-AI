@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compare your resume with an internship or entry-level job description.">
+  <title>InternPrep AI | Resume Analyzer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="InternPrep AI home">InternPrep <span>AI</span></a>
+    <span class="header-note">Resume &amp; Job Description Analyzer</span>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">A clearer next step in your job search</p>
+      <h1 id="page-title">Know what your resume<br>is saying to the role.</h1>
+      <p class="intro-copy">Understand how your resume matches a job before you apply.</p>
+    </section>
+
+    <section class="input-section" aria-label="Resume and job description">
+      <form id="analysis-form">
+        <div class="input-grid">
+          <label class="text-field" for="resume">
+            <span class="field-heading">Resume <span>01</span></span>
+            <textarea id="resume" name="resume" placeholder="Paste your resume here" required></textarea>
+            <span class="field-hint">Include your skills, projects, and experience.</span>
+          </label>
+          <label class="text-field" for="job-description">
+            <span class="field-heading">Job Description <span>02</span></span>
+            <textarea id="job-description" name="job_description" placeholder="Paste the internship or job description here" required></textarea>
+            <span class="field-hint">Use the full description for a more useful comparison.</span>
+          </label>
+        </div>
+        <div class="form-actions">
+          <p id="form-message" class="form-message" role="status" aria-live="polite"></p>
+          <button id="analyze-button" type="submit">Analyze My Profile <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
+    </section>
+
+    <section id="results" class="results" aria-labelledby="results-title" hidden>
+      <div class="results-heading">
+        <div>
+          <p class="eyebrow">Your comparison</p>
+          <h2 id="results-title">Profile analysis</h2>
+        </div>
+        <button id="new-analysis" class="text-button" type="button">Start again</button>
+      </div>
+      <div class="match-panel">
+        <div>
+          <p class="match-label">Profile Match</p>
+          <p class="match-note">Based on recognized technical skills in the job description.</p>
+        </div>
+        <p class="match-value"><span id="match-percentage">0</span><span>%</span></p>
+        <div class="match-track" aria-hidden="true"><span id="match-bar"></span></div>
+      </div>
+      <p class="disclaimer">A simple skill overlap indicator, not a prediction of hiring chances.</p>
+
+      <div class="skills-grid">
+        <section class="result-block">
+          <h3>Matching Skills <span id="matching-count"></span></h3>
+          <ul id="matching-skills" class="tag-list"></ul>
+        </section>
+        <section class="result-block missing-block">
+          <h3>Missing Skills <span id="missing-count"></span></h3>
+          <ul id="missing-skills" class="tag-list"></ul>
+        </section>
+      </div>
+
+      <div class="analysis-grid">
+        <section class="result-block"><h3>Relevant Strengths</h3><ul id="strengths"></ul></section>
+        <section class="result-block"><h3>Project Relevance</h3><ul id="projects"></ul></section>
+        <section class="result-block"><h3>Resume Suggestions</h3><ul id="suggestions"></ul></section>
+        <section class="result-block"><h3>Interview Questions</h3><ol id="questions"></ol></section>
+      </div>
+      <section class="overall-block"><h3>Overall Analysis</h3><p id="overall-analysis"></p></section>
+    </section>
+  </main>
+
+  <footer><span>InternPrep AI</span><span>Built to make the next application a little clearer.</span></footer>
+</body>
+</html>
